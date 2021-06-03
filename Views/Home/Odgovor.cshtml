@@ -1,0 +1,54 @@
+﻿@model Pokusaj3.Models.OdgovorStranica
+@using Pokusaj3.helperi
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div>
+
+        @{
+            var poruka = ", hvala što ste nas kontaktirali putem poruke.";
+            var poruka1 = "Drago nam je što planirate da se upišete u našu autoškolu!";
+            var poruka2 = "Žao nam je što ne planirate da se upišete u našu autoškolu. Želimo Vam puno uspeha!";
+        }
+        <h1>@Model.Ime @poruka </h1>
+        @if (Model.UpisujeSe == "DA")
+        {
+            <h2>@poruka1</h2>
+            @helperi.OdgHelper("~/Content/slike/smesan.jpg")
+        }
+
+        else
+        {
+            <h2>@poruka2</h2>
+            @helperi.OdgHelper("~/Content/slike/smesan.jpg")
+        }
+        <style>
+            table, th, td {
+                border: 3px solid yellow;
+            }
+        </style>
+        <table style="width:100%">
+            <caption>Podaci o korisniku:</caption>
+            <tr>
+                <th>
+                    Ime i prezime
+                </th>
+                <th>Email</th>
+                <th>Mobilni</th>
+                <th>Položeno B.kat</th>
+                <th>Planira upis?</th>
+                <th>Pitanje</th>
+            </tr>
+            <tr>
+                <td>@Model.Ime</td>
+                <td>@Model.Email</td>
+                <td>@Model.Mobilni</td>
+                <td>@Model.Polozeno</td>
+                <td>@Model.UpisujeSe</td>
+                <td>@Model.Pitanje</td>
+            </tr>
+        </table>
+    </div>
+

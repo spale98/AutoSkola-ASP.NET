@@ -1,0 +1,47 @@
+﻿@model Pokusaj3.Controllers.SensorsData
+@{
+    ViewBag.Title = "Chart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="linechart"></div>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Vreme');
+        data.addColumn('number', 'Temp');
+        data.addRows([
+             @foreach(var item1 in Model.Dates)
+             {
+                 var x = item1;
+                 @x;
+
+                 foreach(var item2 in Model.Measurements.FirstOrDefault().Values)
+                 {
+                     var y = item2;
+                     @y;
+                 }
+             } 
+        ]);
+                    var options = {
+            'title': 'Kretanje temperature po vremenu',
+        };
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+    }
+</script>
+
+<body>
+    <div id="chart_div"></div>
+</body>
+

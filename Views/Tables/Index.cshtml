@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Pokusaj3.Models.Table>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista prijavljenih kandidata za naredni ciklus obuke:</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novog", "Create")
+</p>
+<style>
+    table, th, td {
+        border: 3px solid yellow;
+    }
+</style>
+<table class="table" style="width:100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kontakt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Komentar)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kontakt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Komentar)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.Sifra }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.Sifra }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.Sifra })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model Pokusaj3.Controllers.SensorsData
+@{
+
+    ViewBag.Title = "Početna";
+}
+
+<div class="jumbotron">
+    <h1>Autoškola TIM </h1>
+    <p class="lead">Naša škola će Vam pružiti sve mogućnosti i komfor da vozite i učite vožnju u bezbednim i kvalitetnim automobilima, uz konstantnu pažnju i savete naših iskusnih instruktora. Imate mogućnost izbora instruktora, vozila, termina obuke. Dopunski časovi vožnje u peridu kada Vama odgovara.</p>
+    <p><a href="~/Tables/" class="btn btn-primary btn-lg">Prijavi se &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>O nama</h2>
+        <p>
+            Mi u auto školi “TIM” verujemo da svaka osoba zaslužuje pripliku da postane vrhunski vozač i uvek uživa u vožnji. Ako želiš auto školu koja će tvoje znanje i iskustvo vožnje učiti bezbrižnijim, bezbednijim, ekonomičnijim i zabavnijim, onda je “PRAVO” tvoj pravi izbor.
+        </p>
+        <p><a class="btn btn-default" href="~/Home/About/">Pročitaj više &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Kontaktiraj nas</h2>
+        <p>Želimo Vam da u našoj auto školi, lako i jednostavno postanete dobar i bezbedan vozač!</p>
+        <p><a class="btn btn-default" href="~/Home/FormaUpis/">Kontaktiraj nas &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Prijava</h2>
+        <p>Ukoliko ste spremni da uđete u svet vozača, popunite online formular i postanite deo TIM-a još danas!</p>
+        <p><a class="btn btn-default" href="~/Tables/">Prijavi se &raquo;</a></p>
+    </div>
+</div>
+
+
+
+<div>
+
+    @foreach (var item in Model.Measurements.FirstOrDefault().Values)
+    {
+        <h2>Vrednost senzora: @item </h2>
+    }
+
+</div>

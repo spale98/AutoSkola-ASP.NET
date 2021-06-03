@@ -1,0 +1,45 @@
+﻿@model Pokusaj3.Models.OdgovorStranica
+
+@{
+    ViewBag.Title = "FormaUpis";
+}
+
+<h2>Kontakt forma Autoškola TIM</h2>
+
+@using (Html.BeginForm("FormaUpis", "Home", FormMethod.Post, new { @class = "Odg" }))
+
+{
+    <fieldset>
+        <legend>Kontaktiraj nas</legend>
+        <p>Ime i prezime: @Html.TextBoxFor(x => x.Ime) </p>
+        <p>Email adresa: @Html.TextBoxFor(x => x.Email)</p>
+        <p>Kontakt telefon: @Html.TextBoxFor(x => x.Mobilni)</p>
+        <p>
+            Da li imate polozenu B kategoriju?<br>
+
+            @Html.DropDownListFor(x => x.Polozeno, new[] {
+             new SelectListItem() {Text = "Naravno!",Value = "DA"},
+             new SelectListItem() {Text = "Ne, nažalost nemam položeno!", Value ="NE"}
+            }, "Molimo odaberite jednu od opcija!")
+        </p>
+        <p>
+            Da li planirate da se upišete u našu autoškolu?<br>
+
+            @Html.DropDownListFor(x => x.UpisujeSe, new[] {
+             new SelectListItem() {Text = "Da, naravno!",Value = "DA"},
+             new SelectListItem() {Text = "Ne, samo želim da se raspitam o uslovima", Value ="NE"}
+            }, "Molimo odaberite jednu od opcija! ")
+        </p>
+        <p>
+            Pitanje:
+            @Html.TextAreaFor(x => x.Pitanje)
+        </p>
+
+        <input type="submit" value="Pošalji!" />
+
+    </fieldset>
+}
+
+@Styles.Render("~/Content/forma")
+
+
